@@ -57,10 +57,10 @@ return "test";
 
         if (eventType.equals("join")){
             if (payload.events[0].source.type.equals("group")){
-                replyToUser(payload.events[0].replyToken, "Hello Group");
+                replyToUser(payload.events[0].replyToken, "Halo grup ^^ aku ikut nimbrung ya, lagi belajar dulu");
             }
             if (payload.events[0].source.type.equals("room")){
-                replyToUser(payload.events[0].replyToken, "Hello Room");
+                replyToUser(payload.events[0].replyToken, "Halo room ^^ aku ikut nimbrung ya, lagi belajar dulu");
             }
         } else if (eventType.equals("message")){
             if (payload.events[0].source.type.equals("group")){
@@ -72,7 +72,7 @@ return "test";
             }
 
             if (!payload.events[0].message.type.equals("text")){
-                replyToUser(payload.events[0].replyToken, "Unknown message");
+                replyToUser(payload.events[0].replyToken, "chat apaan itu gak ngerti ? :/");
             } else {
                 msgText = payload.events[0].message.text;
                 msgText = msgText.toLowerCase();
@@ -80,11 +80,13 @@ return "test";
                 if (!msgText.contains("bot leave")){
                     try {
                         getMessageData(msgText, idTarget);
+                        replyToUser(payload.events[0].replyToken, msgText);
                     } catch (IOException e) {
                         System.out.println("Exception is raised ");
                         e.printStackTrace();
                     }
                 } else {
+                    replyToUser(payload.events[0].replyToken, "dadah ^^");
                     if (payload.events[0].source.type.equals("group")){
                         leaveGR(payload.events[0].source.groupId, "group");
                     } else if (payload.events[0].source.type.equals("room")){
