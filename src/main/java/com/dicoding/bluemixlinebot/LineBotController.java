@@ -29,6 +29,11 @@ public class LineBotController
     @Qualifier("com.linecorp.channel_access_token")
     String lChannelAccessToken;
 
+@RequestMapping(value="/test", method=RequestMethod.GET)
+public String getTest(){
+return "test";
+}
+
     @RequestMapping(value="/callback", method=RequestMethod.POST)
     public ResponseEntity<String> callback(
             @RequestHeader("X-Line-Signature") String aXLineSignature,
