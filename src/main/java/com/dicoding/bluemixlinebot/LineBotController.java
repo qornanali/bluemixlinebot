@@ -77,7 +77,7 @@ return "test";
                 msgText = payload.events[0].message.text;
                 msgText = msgText.toLowerCase();
 
-                if (!msgText.contains("bot leave")){
+                if (!msgText.contains("dadah humaira")){
                     try {
                         getMessageData(msgText, idTarget);
                         replyToUser(payload.events[0].replyToken, msgText);
